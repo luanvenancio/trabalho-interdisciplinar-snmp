@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { v } from "../../styles/variable";
 
 export const SCard = styled.div`
-    width: 80vw;
-    height: 500px;
+    width: 60vw;
+    height: 100%;
     background: ${({ theme }) => theme.bg};
-    padding: ${v.lgSpacing};
+    padding: ${v.xlSpacing};
     border-radius: 10px;
 `;
 
@@ -25,10 +25,9 @@ export const SCardLabel = styled.label`
 
 export const SCardChartContainer = styled.div`
     display: flex;
-    justify-self: center;
-    align-self: center;
-    max-width: 300px;
-    max-height: 300px;
+    justify-content: center;
+    align-items: center;
+    
     margin: 8px 0;
 `;
 

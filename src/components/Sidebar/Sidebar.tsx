@@ -48,7 +48,6 @@ const Sidebar = () => {
             </>
             <SLogo>
                 <img src={logoSVG} alt="logo" />
-                Monitor SNMP
             </SLogo>
             {linksArray.map(({ icon, label, to }) => (
                 <SLinkContainer key={label} isActive={pathname === to}>

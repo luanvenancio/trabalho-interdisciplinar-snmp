@@ -29,7 +29,9 @@ export const SSidebarButton = styled.button<{ isOpen: boolean }>`
 `;
 
 export const SLogo = styled.div`
-    width: 52px;
+    display: flex;
+    align-items: center;
+    width: 2rem;
 
     img {
         max-width: 100%;

@@ -34,7 +34,7 @@ const MonitorPage = () => {
                 <Doughnut
                     data={data}
                     options={{
-                        responsive: true,
+                        responsive: false,
                     }}
                 />
                 </SCardChartContainer>
