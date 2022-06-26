@@ -1,8 +1,11 @@
-import React from "react";
-import { SCard, SCardContainer, SCardChartContainer, SCardHeader, SCardLabel, SCardTitle } from "../components/Card/styles";
+import { AxiosError, AxiosResponse } from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { stringify } from "qs";
 import { Doughnut } from "react-chartjs-2";
 import { SButton } from "../components/Button/styles";
+import { SCard, SCardChartContainer, SCardContainer, SCardHeader, SCardLabel, SCardTitle } from "../components/Card/styles";
+import api from "../config/api";
+import Api from '../services/ApiService';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -23,6 +26,22 @@ export const data = {
 };
 
 const MonitorPage = () => {
+    const handleClick = async () => {
+        const dados = { // No dados terá os dados de pesquisa na API
+            ipAddress: '192.168.1.6',
+            community: 'gerencia',
+            oid: '1.3.6.1.2.1.1.5.010',
+        };
+        
+        // endpoint, objeto
+        Api.get('snmp', dados)
+            .then((response: AxiosResponse) => {
+                console.log(response.data);
+            })
+            .catch((error: AxiosError) => {
+                console.log(error.response?.data);
+            });
+    }
     return (
         <div>
             <SCard>
@@ -39,7 +58,7 @@ const MonitorPage = () => {
                 />
                 </SCardChartContainer>
                 <SCardContainer>
-                    <SButton type="Button" onClick={() => {alert("Click")}} primary>Iniciar</SButton>
+                    <SButton type="Button" onClick={handleClick} primary>Iniciar</SButton>
                     <SButton>Parar</SButton>
                 </SCardContainer>
             </SCard>
