@@ -16,10 +16,14 @@ public class SnmpController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetResource(ResourceOptions resource)
+    public async Task<IActionResult> GetResource([FromQuery] ResourceOptions resource)
     {
-        var variable = await _snmpService.ReadResource(resource.IpAddress, resource.Community, resource.Variable);
+        var oids = await _snmpService.ReadResource(resource.IpAddress, resource.Community, resource.Oid);
 
-        return Ok(variable);
+        if(oids.Count == 0) {
+            return NotFound("No such OID found.");
+        }
+
+        return Ok(oids);
     }
 }

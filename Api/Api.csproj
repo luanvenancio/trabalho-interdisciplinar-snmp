@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Lextm.SharpSnmpLib" Version="12.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
