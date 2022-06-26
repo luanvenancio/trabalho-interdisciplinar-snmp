@@ -6,14 +6,7 @@ import Routesx from './Routesx';
 import { GlobalStyle } from './styles/globalStyles';
 import { darkTheme, lightTheme } from './styles/theme';
 
-type ThemeContextType = {
-    theme: string;
-    setTheme: (value: string) => void;
-};
-
-export const ThemeContext = React.createContext<
-    ThemeContextType | undefined
->(undefined);
+export const ThemeContext = React.createContext(null);
 
 const App = () => {
     const [theme, setTheme] = useState("light");

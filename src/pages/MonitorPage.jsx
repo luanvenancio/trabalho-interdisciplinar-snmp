@@ -1,34 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 import { SCard, SCardContainer, SCardChartContainer, SCardHeader, SCardLabel, SCardTitle } from "../components/Card/styles";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { SButton } from "../components/Button/styles";
+import { BsPlayFill, BsStopFill } from "react-icons/bs";
+import EditInput from "../components/EditInput/EditInput";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-    labels: ["Red", "Blue"],
+    labels: ["Use", "Free"],
     datasets: [
         {
             label: "# of Usage",
-            data: [10, 90],
+            data: [40, 60],
             backgroundColor: [
-                "rgba(255, 99, 132, 0.2)",
-                "rgba(54, 162, 235, 0.2)",
+                "#347CFF",
+                "#B8D0FE",
             ],
-            borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+            borderColor: ["#347CFF", "#B8D0FE"],
             borderWidth: 1,
         },
     ],
 };
 
 const MonitorPage = () => {
+    const [value, setValue] = useState("127.0.0.1");
+
     return (
         <div>
             <SCard>
                 <SCardHeader>
                     <SCardTitle>Memory Usage</SCardTitle>
-                    <SCardLabel>127.0.0.1</SCardLabel>
+                    <EditInput value={value} setValue={setValue}></EditInput>
                 </SCardHeader>
                 <SCardChartContainer>
                 <Doughnut
@@ -39,8 +43,8 @@ const MonitorPage = () => {
                 />
                 </SCardChartContainer>
                 <SCardContainer>
-                    <SButton type="Button" onClick={() => {alert("Click")}} primary>Iniciar</SButton>
-                    <SButton>Parar</SButton>
+                    <SButton type="Button" onClick={() => {alert("Click")}} primary><BsPlayFill />INICIAR</SButton>
+                    <SButton type="Button"><BsStopFill/>PARAR</SButton>
                 </SCardContainer>
             </SCard>
         </div>

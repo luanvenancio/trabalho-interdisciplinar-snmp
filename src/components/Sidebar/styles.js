@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { btnReset, v } from '../../styles/variable';
 
-export const SSidebar = styled.div<{ isOpen: boolean }>`
-    width: ${({ isOpen }:any) => (!isOpen ? `auto` : v.sidebarWidth)};
+export const SSidebar = styled.div`
+    width: ${({ isOpen }) => (!isOpen ? `auto` : v.sidebarWidth)};
     background: ${({ theme }) => theme.bg};
     height: 100vh;
     padding: ${v.lgSpacing};
@@ -11,11 +11,11 @@ export const SSidebar = styled.div<{ isOpen: boolean }>`
     position: relative;
 `;
 
-export const SSidebarButton = styled.button<{ isOpen: boolean }>`
+export const SSidebarButton = styled.button`
     ${btnReset};
     position: absolute;
     top: ${v.xxlSpacing};
-    right: ${({ isOpen }:any) => (isOpen ? `-16px` : `-40px`)};
+    right: ${({ isOpen }) => (isOpen ? `-16px` : `-40px`)};
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -25,7 +25,7 @@ export const SSidebarButton = styled.button<{ isOpen: boolean }>`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transform: ${({ isOpen }:any) => (!isOpen ? `rotate(180deg)` : `initial`)};
+    transform: ${({ isOpen }) => (!isOpen ? `rotate(180deg)` : `initial`)};
 `;
 
 export const SLogo = styled.div`
@@ -50,8 +50,8 @@ export const SDivider = styled.div`
     margin: ${v.lgSpacing} 0;
 `;
 
-export const SLinkContainer = styled.div<{ isActive?: boolean }>`
-    background: ${({ theme, isActive }:any) => (!isActive ? `transparent` : theme.bg3)};
+export const SLinkContainer = styled.div`
+    background: ${({ theme, isActive }) => (!isActive ? `transparent` : theme.bg3)};
     border-radius: ${v.borderRadius};
     margin: 8px 0;
     :hover {
@@ -94,14 +94,14 @@ export const SThemeLabel = styled.span`
     flex: 1;
 `;
 
-export const SThemeToggler = styled.button<{ isActive: boolean }>`
+export const SThemeToggler = styled.button`
     ${btnReset};
     margin: 0 auto;
     cursor: pointer;
     width: 36px;
     height: 20px;
     border-radius: 10px;
-    background: ${({ theme, isActive }:any) => (!isActive ? theme.bg3 : theme.primary)};
+    background: ${({ theme, isActive }) => (!isActive ? theme.bg3 : theme.primary)};
     position: relative;
 `;
 

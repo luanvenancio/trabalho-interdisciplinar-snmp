@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { ThemeContext } from "./../../App";
+import { ThemeContext } from "../../App";
 import { useLocation } from "react-router-dom";
 import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
@@ -26,13 +26,8 @@ import {
 
 import { logoSVG } from "../../assets";
 
-type ThemeContextType = {
-    theme?: string;
-    setTheme?: (value: string) => void;
-};
-
 const Sidebar = () => {
-    const { theme, setTheme } = useContext(ThemeContext) as ThemeContextType;
+    const { theme, setTheme } = useContext(ThemeContext);
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const { pathname } = useLocation();
 
@@ -80,7 +75,7 @@ const Sidebar = () => {
                 <SThemeToggler
                     isActive={theme === "dark"}
                     onClick={() =>
-                        setTheme((p: string) => (p === 'light' ? 'dark' : 'light'))
+                        setTheme((p) => (p === 'light' ? 'dark' : 'light'))
                     }
                 >
                     <SToggleThumb

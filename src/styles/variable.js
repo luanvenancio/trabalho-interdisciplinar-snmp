@@ -3,12 +3,12 @@ import {css} from 'styled-components';
 export const v = {
     sidebarWidth: `18.75rem`,
     cardWitdth: `75rem`,
-    smSpacing: `8px`,
-    mdSpacing: `16px`,
-    lgSpacing: `24px`,
-    xlSpacing: `32px`,
-    xxlSpacing: `48px`,
-    borderRadius: `6px`
+    smSpacing: `.5rem`,
+    mdSpacing: `1rem`,
+    lgSpacing: `1.5rem`,
+    xlSpacing: `2rem`,
+    xxlSpacing: `3rem`,
+    borderRadius: `.375rem`
 };
 
 export const btnReset = css `
