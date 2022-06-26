@@ -11,7 +11,7 @@ export const SInput = styled.input`
   color: grey;
   
   &:hover {
-    background-color: #D8DEE9;
+    background-color: ${({ theme }) => theme.bg3};
     cursor: pointer;
   }
 
