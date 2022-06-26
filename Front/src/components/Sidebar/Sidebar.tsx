@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { ThemeContext } from "./../../App";
+import { ThemeContext } from "../../App";
 import { useLocation } from "react-router-dom";
 import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
