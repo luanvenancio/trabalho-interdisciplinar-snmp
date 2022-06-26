@@ -15,6 +15,10 @@ export const SInput = styled.input`
     cursor: pointer;
   }
 
+  &:focus {
+    background-color: transparent;
+  }
+
 `;
 
 export const SEditInputContainer = styled.div`

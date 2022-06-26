@@ -31,10 +31,10 @@ export const SSidebarButton = styled.button`
 export const SLogo = styled.div`
     display: flex;
     align-items: center;
-    width: 2rem;
+    justify-content: ${({ isOpen }) => (isOpen ? `flex-start` : `center`)};
 
     img {
-        max-width: 100%;
+        width: 1.25rem;
         height: auto;
     }
 
