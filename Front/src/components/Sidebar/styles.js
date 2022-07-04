@@ -34,7 +34,7 @@ export const SLogo = styled.div`
     justify-content: ${({ isOpen }) => (isOpen ? `flex-start` : `center`)};
 
     img {
-        width: 1.25rem;
+        width: 2rem;
         height: auto;
     }
 
