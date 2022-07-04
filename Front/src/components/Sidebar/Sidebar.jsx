@@ -61,15 +61,6 @@ const Sidebar = () => {
                 </SLinkContainer>
             ))}
             <SDivider />
-            {secondaryLinksArray.map(({ icon, label }) => (
-                <SLinkContainer key={label}>
-                    <SLink to="/" style={!sidebarOpen ? { width: `fit-content` } : {}}>
-                        <SLinkIcon>{icon}</SLinkIcon>
-                        {sidebarOpen && <SLinkLabel>{label}</SLinkLabel>}
-                    </SLink>
-                </SLinkContainer>
-            ))}
-            <SDivider />
             <STheme>
                 {sidebarOpen && <SThemeLabel>Dark Mode</SThemeLabel>}
                 <SThemeToggler
@@ -94,31 +85,21 @@ const linksArray = [
         to: "/",
     },
     {
-        label: "Statistics",
+        label: "Uso da Memória",
         icon: <MdOutlineAnalytics />,
-        to: "/statistics",
+        to: "/memory",
     },
     {
-        label: "Customers",
+        label: "Monitor de Processos",
         icon: <BsPeople />,
-        to: "/customers",
+        to: "/process",
     },
     {
-        label: "Diagrams",
+        label: "Versão do Sistema",
         icon: <AiOutlineApartment />,
-        to: "/diagrams",
+        to: "/version",
     },
 ];
 
-const secondaryLinksArray = [
-    {
-        label: "Settings",
-        icon: <AiOutlineSetting />,
-    },
-    {
-        label: "Logout",
-        icon: <MdLogout />,
-    },
-];
 
 export default Sidebar;

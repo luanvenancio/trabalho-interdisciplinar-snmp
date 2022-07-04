@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2Bk+4SN8h9ksY8Xyn3SLv+OiyODpGoKVTVKEfXhDUtHHRoO2ngYPn5Yvk5/akib8cu2QbGq3wIFSMXDOsfBUAA==",
+  "dgSpecHash": "33MvggycQZ3LuGNJN/oyarhgvs2ht6PrFnnGfMoYJrrrKrUm3uolfQPSWgOMJrraD77w4FC/st3UO40GYQyYMw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\luanv\\Documents\\GitHub\\trabalho-interdisciplinar-snmp\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\luanv\\Documents\\GitHub\\trabalho-interdisciplinar-snmp\\api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luanv\\.nuget\\packages\\lextm.sharpsnmplib\\12.4.0\\lextm.sharpsnmplib.12.4.0.nupkg.sha512",
     "C:\\Users\\luanv\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\luanv\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\luanv\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\luanv\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\luanv\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\luanv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

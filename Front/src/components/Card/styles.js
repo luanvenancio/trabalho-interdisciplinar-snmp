@@ -3,7 +3,7 @@ import { v } from "../../styles/variable";
 
 export const SCard = styled.div`
     width: 60vw;
-    height: 100%;
+    max-height: 100%;
     background: ${({ theme }) => theme.bg};
     padding: ${v.xlSpacing};
     border-radius: 10px;
