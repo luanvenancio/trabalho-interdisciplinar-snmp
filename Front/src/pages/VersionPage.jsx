@@ -14,7 +14,7 @@ import Api from "../services/ApiService";
 
 const VersionPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
-    const [info, setInfo] = useState();
+    const [info, setInfo] = useState('');
 
     const handleClick = async () => {
         const dados = {
@@ -27,9 +27,7 @@ const VersionPage = () => {
         // endpoint, objeto
         Api.get("snmp", dados)
             .then((response) => {
-                console.log(response.data[0].split("Data: ")[1]);
-                setInfo(response.data[0].split("Data: ")[1]);
-                //console.log(info);
+                setInfo(response.data[0].split("-"));
             })
             .catch((error) => {
                 console.log(error.response?.data);
@@ -45,7 +43,9 @@ const VersionPage = () => {
                     setValue={setIpAddressValue}
                 ></EditInput>
             </SCardHeader>
-            <SCardChartContainer>{info}
+            <SCardChartContainer>
+                {info && info[1]}
+                {info && info[0].split("Data: ")[1]}
             </SCardChartContainer>
             <SCardContainer>
                 <SButton type="Button" onClick={handleClick} primary>
