@@ -3,13 +3,12 @@ import { v } from "../../styles/variable";
 
 export const SInput = styled.input`
   background-color: transparent;
-  width: 8.75rem;
+  width: 9.15rem;
   border: 0;
   border-radius: 4px;
   font-size: 16px;
-  padding: 4px;
+  padding: .25rem .25rem .25rem 1.5rem;
   box-sizing: border-box;
-  padding-left: 1.5rem;
   color: grey;
   
   &:hover {
@@ -36,7 +35,5 @@ export const SIcon = styled.div`
 
 export const SEditInputContainer = styled.div`
   position:relative;
-  /*display: flex;
-  align-items:flex-end;*/
   margin-left: ${v.smSpacing};
 `;
