@@ -7,11 +7,14 @@ import {
     SCardTitle,
     SCardInputContainer,
 } from "../components/Card/styles";
+
+import { SLogo } from "../components/Sidebar/styles";
 import { SButton } from "../components/Button/styles";
 import { BsPlayFill, BsWindows } from "react-icons/bs";
 import { FaLinux } from "react-icons/fa";
 import EditInput from "../components/EditInput/EditInput";
 import Api from "../services/ApiService";
+import { windowsPNG, linuxPNG } from "../assets";
 
 const VersionPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
@@ -36,7 +39,7 @@ const VersionPage = () => {
                 console.log(error.response?.data);
             });
 
-        console.log(info[0]);
+        console.log(info);
     };
 
     return (
@@ -44,29 +47,33 @@ const VersionPage = () => {
             <SCardHeader>
                 <SCardTitle>Versão do Sistema</SCardTitle>
                 <SCardInputContainer>
-                <EditInput
-                    value={ipAddressValue}
-                    setValue={setIpAddressValue}
-                ></EditInput>
-                <EditInput
-                            value={comunityValue}
-                            setValue={setComunityValue}
-                        ></EditInput>
+                    <EditInput
+                        value={ipAddressValue}
+                        setValue={setIpAddressValue}
+                    ></EditInput>
+                    <EditInput
+                        value={comunityValue}
+                        setValue={setComunityValue}
+                    ></EditInput>
                 </SCardInputContainer>
             </SCardHeader>
             <SCardHeader>
                 {info && info[0].includes("Windows") ? (
                     <>
-                        <BsWindows />
-                        {info[0].split("Data: ")[1]}
+                        <SLogo>
+                            <img src={windowsPNG} alt="windows" />
+                        </SLogo>
+                        {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
                     </>
                 ) : (
                     <></>
                 )}
                 {info && info[0].includes("Linux") ? (
                     <>
-                        <FaLinux />
-                        {info[0].split("Data: ")[1]}
+                        <SLogo>
+                        <img src={linuxPNG} alt="linux" />
+                        </SLogo>
+                        {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
                     </>
                 ) : (
                     <></>

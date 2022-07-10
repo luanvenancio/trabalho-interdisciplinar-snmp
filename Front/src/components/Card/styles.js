@@ -7,7 +7,8 @@ export const SCard = styled.div`
     background: ${({ theme }) => theme.bg};
     padding: ${v.xxlSpacing} ${v.xxlSpacing} ${v.lgSpacing} ${v.xxlSpacing};
     margin-bottom: ${v.xlSpacing};
-    border-radius: 10px;
+    border-radius: .5rem;
+    box-shadow: 0 0 #0000, 0 0 #0000,0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
 `;
 
 export const SSmallCard = styled.div`
@@ -15,7 +16,8 @@ export const SSmallCard = styled.div`
     background: ${({ theme }) => theme.bg};
     padding: ${v.lgSpacing};
     margin: ${v.mdSpacing};
-    border-radius: 12px;
+    border-radius: .5rem;
+    box-shadow: 0 0 #0000, 0 0 #0000,0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
 `;
 
 export const SCardHeader = styled.div`
@@ -71,4 +73,15 @@ export const SCardContainer = styled.div`
     flex-flow: row wrap;
     padding: ${v.smSpacing};
 `;
+
+export const SIconBackground = styled.div`
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffc0c0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom: ${v.mdSpacing};
+`
 

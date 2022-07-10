@@ -42,7 +42,7 @@ const ProcessPage = () => {
             {
                 label: "nº de processos",
                 data: dataIPInY,
-                backgroundColor: "#347CFF",
+                backgroundColor: "#769de6",
                 borderColor: "#347CFF",
             },
         ],
@@ -76,7 +76,7 @@ const ProcessPage = () => {
                                 {
                                     label: "nº de processos",
                                     data: dataIPInY,
-                                    backgroundColor: "#347CFF",
+                                    backgroundColor: "rgb(138, 171, 233)",
                                     borderColor: "#347CFF",
                                 },
                             ],

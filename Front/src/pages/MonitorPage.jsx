@@ -37,51 +37,62 @@ const MonitorPage = () => {
         // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
         community: "gerencia",
-        oid: "1.3.6.1.2.1.25.2.3.1.6.5",
+        oid: "1.3.6.1.2.1.4.9.0",
     };
 
     const dadosMemoriaLivre = {
         // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
         community: "gerencia",
-        oid: "1.3.6.1.2.1.25.2.3.1.4.5",
+        oid: "1.3.6.1.2.1.4.3.0",
     };
 
+    let aux, aux2,temp = 0;
     useEffect(() => {
         const interval = setInterval(() => {
             if (iniciar) {
                 // endpoint, objeto
                 Api.get("snmp", dadosMemoriaTotal)
                     .then((response) => {
-                        dataT.push(response.data[0].split("Data: ")[1]);
-                        console.log(response.data[0].split("Data: ")[1]);
+                        aux2 = response.data[0].split("Data: ")[1] - aux2;
+                        dataT.push(aux2);
+                        //console.log(response.data[0].split("Data: ")[1]);
+                        if(dataT.length > 1){
+                            dataT.shift();
+                        }
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
                     });
                     Api.get("snmp", dadosMemoriaLivre)
                     .then((response) => {
-                        dataL.push(response.data[0].split("Data: ")[1]);
-                        console.log(response.data[0].split("Data: ")[1]);
+                        temp = (response.data[0].split("Data: ")[1]);
+                        aux = temp - aux;
+                        console.log(aux);
+                        dataL.push(temp);
+                        //console.log(response.data[0].split("Data: ")[1]);
+                        if(dataL.length > 1)
+                            dataL.shift();
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
                     });
 
-                    let aux = ((dataL * 100)/dataT);
+                    //let aux = ((dataL * 100)/dataT);
+                    console.log(dataL);
+                    //console.log(dataL);
                     setData({
-                        labels: ["Usado", "Livre"],
+                        labels: ["Entregues", "Recebidos"],
                         datasets: [
                             {
                                 label: "nº de processos",
-                                data: [aux, (100-aux)],
-                                backgroundColor: "#347CFF",
-                                borderColor: "#347CFF",
+                                data: [dataT, dataL],
+                                backgroundColor: ["#347CFF", "#ff3434"],
+                                borderColor: ["#316ddf", "#e02e2e"],
                             },
                         ],
                     });
 
-                    console.log(aux);
             } else {
                 clearInterval(interval);
             }
