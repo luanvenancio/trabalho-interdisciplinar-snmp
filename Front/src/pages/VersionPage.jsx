@@ -54,7 +54,7 @@ const VersionPage = () => {
                         ></EditInput>
                 </SCardInputContainer>
             </SCardHeader>
-            <SCardChartContainer>
+            <SCardHeader>
                 {info && info[0].includes("Windows") ? (
                     <>
                         <BsWindows />
@@ -71,7 +71,7 @@ const VersionPage = () => {
                 ) : (
                     <></>
                 )}
-            </SCardChartContainer>
+            </SCardHeader>
             <SCardContainer>
                 <SButton type="Button" onClick={handleClick} primary>
                     <BsPlayFill />
