@@ -36,7 +36,6 @@ export const SLogo = styled.div`
     img {
         width: 2rem;
         height: auto;
-        filter: ${({ theme }) => theme.fill};
     }
 
     cursor: pointer;

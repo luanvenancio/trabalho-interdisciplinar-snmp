@@ -6,8 +6,8 @@ import {
     SSmallCardTitle,
     SSmallCard,
     SFeatures,
-    SCardHeader,
     SIconBackground,
+    SCardImage
 } from "../components/Card/styles";
 import {
     SLink,
@@ -25,6 +25,11 @@ const HomePage = () => {
         <>
             <SCard>
                 <SCardTitle>
+                    <SCardImage align="start">
+                        <SIconBackground>
+                        <img src={logoSVG} alt="logo" />
+                        </SIconBackground>
+                    </SCardImage>
                     Ferramenta SNMP
                 </SCardTitle>
                 <SCardLabel>Função Monitorar SNMP</SCardLabel>

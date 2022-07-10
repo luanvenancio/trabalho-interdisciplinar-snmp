@@ -112,6 +112,14 @@ const TCPPage = () => {
                         defaultValue={timeIntervalOption}
                         onChange={setTimeIntervalOption}
                         options={options}
+                        theme={theme => ({
+                            ...theme,
+                            borderRadius: 0,
+                            colors: {
+                              ...theme.colors,
+                              neutral0: `${({ theme }) => theme.bg3}`,
+                              text: `${({ theme }) => theme.text}`,
+                            }})}
                     />
                 </SCardLabelContainer>
             </SCardHeader>

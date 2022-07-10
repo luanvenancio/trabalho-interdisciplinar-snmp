@@ -17,6 +17,8 @@ import {
     SThemeToggler,
     SToggleThumb,
 } from "./styles";
+
+import {SIconBackground} from "../Card/styles";
 import {
     AiOutlineApartment,
     AiOutlineHome,
@@ -42,7 +44,9 @@ const Sidebar = () => {
                 </SSidebarButton>
             </>
             <SLogo>
+            <SIconBackground>
                 <img src={logoSVG} alt="logo" />
+                </SIconBackground>
             </SLogo>
             {linksArray.map(({ icon, label, to }) => (
                 <SLinkContainer key={label} isActive={pathname === to}>

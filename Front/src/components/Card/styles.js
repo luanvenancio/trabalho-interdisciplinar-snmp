@@ -75,7 +75,7 @@ export const SCardContainer = styled.div`
 `;
 
 export const SIconBackground = styled.div`
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     background: #ffc0c0;
@@ -83,5 +83,20 @@ export const SIconBackground = styled.div`
     height: 3rem;
     border-radius: 50%;
     margin-bottom: ${v.mdSpacing};
-`
+`;
+
+export const SCardImage = styled.div`
+    display: flex;
+    align-items: ${(props) => props.align};
+    justify-content: ${(props) => props.align};
+
+    img {
+        width: 2rem;
+        height: auto;
+    }
+
+    cursor: pointer;
+
+    margin-bottom: ${v.mdSpacing};
+`;
 

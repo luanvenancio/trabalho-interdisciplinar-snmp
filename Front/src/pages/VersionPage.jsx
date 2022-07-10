@@ -6,6 +6,7 @@ import {
     SCardHeader,
     SCardTitle,
     SCardInputContainer,
+    SCardImage,
 } from "../components/Card/styles";
 
 import { SLogo } from "../components/Sidebar/styles";
@@ -60,9 +61,9 @@ const VersionPage = () => {
             <SCardHeader>
                 {info && info[0].includes("Windows") ? (
                     <>
-                        <SLogo>
+                        <SCardImage align="center">
                             <img src={windowsPNG} alt="windows" />
-                        </SLogo>
+                        </SCardImage>
                         {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
                     </>
                 ) : (
@@ -70,9 +71,9 @@ const VersionPage = () => {
                 )}
                 {info && info[0].includes("Linux") ? (
                     <>
-                        <SLogo>
+                        <SCardImage>
                         <img src={linuxPNG} alt="linux" />
-                        </SLogo>
+                        </SCardImage>
                         {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
                     </>
                 ) : (
