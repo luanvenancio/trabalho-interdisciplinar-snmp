@@ -85,6 +85,11 @@ const linksArray = [
         to: "/",
     },
     {
+        label: "Monitor de TCP",
+        icon: <BsPeople />,
+        to: "/tcp",
+    },
+    {
         label: "Uso da Memória",
         icon: <MdOutlineAnalytics />,
         to: "/memory",

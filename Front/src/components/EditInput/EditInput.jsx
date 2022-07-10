@@ -4,7 +4,8 @@ import { FiEdit } from "react-icons/fi";
 import { IconContext } from "react-icons";
 
 const EditInput = ({ value, setValue }) => {
-    const [editingValue, setEditingValue] = React.useState(value);
+    const [editingValue, setEditingValue] = useState(value);
+    const [colorIcon, setColorIcon] = useState("grey");
 
     const onChange = (event) => setEditingValue(event.target.value);
 
@@ -20,11 +21,16 @@ const EditInput = ({ value, setValue }) => {
         } else {
             setValue(event.target.value);
         }
+        setColorIcon("grey");
     };
+
+    const onFocus = (event) => {
+        setColorIcon("black");
+    }
 
     return (
         <SEditInputContainer>
-            <IconContext.Provider value={{ color: "grey" }}>
+            <IconContext.Provider value={{ color: colorIcon }}>
                 <SIcon>
                     <FiEdit />
                 </SIcon>
@@ -36,6 +42,7 @@ const EditInput = ({ value, setValue }) => {
                 onChange={onChange}
                 onKeyDown={onKeyDown}
                 onBlur={onBlur}
+                onFocus={onFocus}
             />
         </SEditInputContainer>
     );

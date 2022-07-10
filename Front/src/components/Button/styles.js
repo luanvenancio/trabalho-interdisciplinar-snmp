@@ -15,6 +15,7 @@ export const SButton = styled(Button)`
     color: ${props => props.primary ? "white" : "black"};
     cursor: pointer;
     align-items: center;
+    transition: 0.3s;
 
     svg{
         margin-right: .5rem;

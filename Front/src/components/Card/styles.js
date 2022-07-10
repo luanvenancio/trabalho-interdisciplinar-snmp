@@ -9,6 +9,14 @@ export const SCard = styled.div`
     border-radius: 10px;
 `;
 
+export const SSmallCard = styled.div`
+    max-height: 100%;
+    background: ${({ theme }) => theme.bg};
+    padding: ${v.mdSpacing};
+    margin: ${v.mdSpacing};
+    border-radius: 12px;
+`;
+
 export const SCardHeader = styled.div`
     display:flex;
     justify-content: flex-start;
@@ -33,9 +41,23 @@ export const SCardChartContainer = styled.div`
     margin: 16px 0;
 `;
 
+export const SCardInputContainer = styled.div`
+    display: flex;
+    justify-content: start;
+    flex-flow: row wrap;
+`;
+
+export const SCardLabelContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: ${v.smSpacing};
+`;
+
 export const SCardContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
     padding: ${v.smSpacing};
 `;
+

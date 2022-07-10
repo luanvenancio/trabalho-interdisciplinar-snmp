@@ -4,6 +4,7 @@ export const lightTheme = {
     bg2: "rgb(245,245,245)",
     bg3: "rgb(230,230,230)",
     text: "rgb(45,45,45)",
+    fill: "invert(0%)",
     primary: "#347CFF"
 };
 export const darkTheme = {
@@ -12,5 +13,6 @@ export const darkTheme = {
     bg2: "rgb(30,30,30)",
     bg3: "rgb(50,50,50)",
     text: "rgb(210,210,210)",
+    fill: "invert(100%)",
     primary: "rgb(52, 131, 235)"
 };

@@ -7,9 +7,10 @@ export const SInput = styled.input`
   border: 0;
   border-radius: 4px;
   font-size: 16px;
-  padding: .25rem .25rem .25rem 1.5rem;
+  padding: .2rem 0 .25rem 1.5rem;
   box-sizing: border-box;
   color: grey;
+  transition: 0.3s;
   
   &:hover {
     background-color: ${({ theme }) => theme.bg3};
@@ -18,6 +19,7 @@ export const SInput = styled.input`
 
   &:focus {
     background-color: transparent;
+    color: black;
   }
 
 `;
@@ -35,5 +37,4 @@ export const SIcon = styled.div`
 
 export const SEditInputContainer = styled.div`
   position:relative;
-  margin-left: ${v.smSpacing};
 `;

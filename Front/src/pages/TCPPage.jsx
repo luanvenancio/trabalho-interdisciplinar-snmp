@@ -27,7 +27,7 @@ const options = [
     { value: 5000, label: "5 Seg" },
 ];
 
-const ProcessPage = () => {
+const TCPPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
     const [comunityValue, setComunityValue] = useState("gerencia");
     const [iniciar, setIniciar] = useState(false);
@@ -40,7 +40,7 @@ const ProcessPage = () => {
         labels: labelIPInX,
         datasets: [
             {
-                label: "nº de processos",
+                label: "nº de Conexões TCP Estabelecidas",
                 data: dataIPInY,
                 backgroundColor: "#347CFF",
                 borderColor: "#347CFF",
@@ -52,7 +52,7 @@ const ProcessPage = () => {
         // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
         community: comunityValue,
-        oid: "1.3.6.1.2.1.25.1.6.0",
+        oid: "1.3.6.1.2.1.6.9.0",
     };
 
     useEffect(() => {
@@ -74,7 +74,7 @@ const ProcessPage = () => {
                             labels: labelIPInX,
                             datasets: [
                                 {
-                                    label: "nº de processos",
+                                    label: "nº de Conexões TCP Estabelecidas",
                                     data: dataIPInY,
                                     backgroundColor: "#347CFF",
                                     borderColor: "#347CFF",
@@ -96,7 +96,7 @@ const ProcessPage = () => {
     return (
         <SCard>
             <SCardHeader>
-                <SCardTitle>Monitor de Processos</SCardTitle>
+                <SCardTitle>Monitor de Conexões TCP</SCardTitle>
                 <SCardLabelContainer>
                     <SCardInputContainer>
                         <EditInput
@@ -131,7 +131,7 @@ const ProcessPage = () => {
                                 display: true,
                                 title: {
                                     display: true,
-                                    text: "Número de processos",
+                                    text: "Número de Conexões TCP Estabelecidas",
                                 },
                             },
                         },
@@ -160,4 +160,4 @@ const ProcessPage = () => {
     );
 };
 
-export default ProcessPage;
+export default TCPPage;
