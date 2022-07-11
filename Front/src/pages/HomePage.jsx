@@ -22,7 +22,7 @@ const HomePage = () => {
         <>
             <SCard>
                 <SCardTitle>
-                    <SCardImage align="start">
+                    <SCardImage align="start" width="2rem">
                         <SIconBackground>
                         <img src={logoSVG} alt="logo" />
                         </SIconBackground>
