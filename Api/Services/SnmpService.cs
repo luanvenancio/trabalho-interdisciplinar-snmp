@@ -16,7 +16,7 @@ class SnmpService : ISnmpService
         var communityOctet = new OctetString(community);
         var variables = new List<Variable>{new Variable(new ObjectIdentifier(oid))};
 
-        var oids = Messenger.Get(VersionCode.V1, host, communityOctet, variables, 1000);
+        var oids = Messenger.Get(VersionCode.V1, host, communityOctet, variables, 10000);
 
         var oidMessages = new List<string>();
 
