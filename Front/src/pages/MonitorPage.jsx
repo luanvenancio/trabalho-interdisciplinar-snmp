@@ -17,82 +17,92 @@ ChartJS.register(...registerables);
 
 const dataT = [];
 const dataL = [];
+const dataV = [];
 
 const MonitorPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
     const [iniciar, setIniciar] = useState(false);
 
     const [data, setData] = useState({
-        labels: ["Usado", "Livre"],
+        labels: ["Delivered", "Errors", "Send"],
         datasets: [
             {
-                label: "nº de processos",
-                backgroundColor: "#347CFF",
-                borderColor: "#347CFF",
+                backgroundColor: ["#347CFF", "#ff3434", "#39f387"],
+                borderColor: ["#316ddf", "#e02e2e", "#24c467"],
             },
         ],
     });
 
-    const dadosMemoriaTotal = {
+    const udpDelivered = {
         // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
         community: "gerencia",
-        oid: "1.3.6.1.2.1.4.9.0",
+        oid: "1.3.6.1.2.1.7.1.0",
     };
 
-    const dadosMemoriaLivre = {
+    const udpErrors = {
         // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
         community: "gerencia",
-        oid: "1.3.6.1.2.1.4.3.0",
+        oid: "1.3.6.1.2.1.7.3.0",
     };
 
-    let aux, aux2,temp = 0;
+    const udpSend = {
+        // No dados terá os dados de pesquisa na API
+        ipAddress: ipAddressValue,
+        community: "gerencia",
+        oid: "1.3.6.1.2.1.7.4.0",
+    };
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (iniciar) {
                 // endpoint, objeto
-                Api.get("snmp", dadosMemoriaTotal)
+                Api.get("snmp", udpDelivered)
                     .then((response) => {
-                        aux2 = response.data[0].split("Data: ")[1] - aux2;
-                        dataT.push(aux2);
+                        dataT.push(response.data[0].split("Data: ")[1]);
                         //console.log(response.data[0].split("Data: ")[1]);
-                        if(dataT.length > 1){
-                            dataT.shift();
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error.response?.data);
-                    });
-                    Api.get("snmp", dadosMemoriaLivre)
-                    .then((response) => {
-                        temp = (response.data[0].split("Data: ")[1]);
-                        aux = temp - aux;
-                        console.log(aux);
-                        dataL.push(temp);
-                        //console.log(response.data[0].split("Data: ")[1]);
-                        if(dataL.length > 1)
-                            dataL.shift();
+                        if (dataT.length > 1) dataT.shift();
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
                     });
 
-                    //let aux = ((dataL * 100)/dataT);
-                    console.log(dataL);
-                    //console.log(dataL);
-                    setData({
-                        labels: ["Entregues", "Recebidos"],
-                        datasets: [
-                            {
-                                label: "nº de processos",
-                                data: [dataT, dataL],
-                                backgroundColor: ["#347CFF", "#ff3434"],
-                                borderColor: ["#316ddf", "#e02e2e"],
-                            },
-                        ],
+                Api.get("snmp", udpErrors)
+                    .then((response) => {
+                        dataL.push(response.data[0].split("Data: ")[1]);
+                        //console.log(response.data[0].split("Data: ")[1]);
+                        if (dataL.length > 1) dataL.shift();
+                    })
+                    .catch((error) => {
+                        console.log(error.response?.data);
                     });
 
+                Api.get("snmp", udpSend)
+                    .then((response) => {
+                        dataV.push(response.data[0].split("Data: ")[1]);
+                        //console.log(response.data[0].split("Data: ")[1]);
+                        if (dataV.length > 1) dataV.shift();
+                    })
+                    .catch((error) => {
+                        console.log(error.response?.data);
+                    });
+
+                //let aux = ((dataL * 100)/dataT);
+                console.log("Errors " + dataL);
+                console.log("Deliv " + dataT);
+                console.log("Send " + dataV);
+                //console.log(dataL);
+                setData({
+                    labels: ["Delivered", "Errors", "Send"],
+                    datasets: [
+                        {
+                            data: [dataT, dataL, dataV],
+                            backgroundColor: ["#347CFF", "#ff3434", "#39f387"],
+                            borderColor: ["#316ddf", "#e02e2e", "#24c467"],
+                        },
+                    ],
+                });
             } else {
                 clearInterval(interval);
             }
@@ -104,7 +114,7 @@ const MonitorPage = () => {
     return (
         <SCard>
             <SCardHeader>
-                <SCardTitle>Uso da Memória</SCardTitle>
+                <SCardTitle>Monitor UDP</SCardTitle>
                 <EditInput
                     value={ipAddressValue}
                     setValue={setIpAddressValue}

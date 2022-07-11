@@ -1,6 +1,6 @@
 import { MdOutlineAnalytics } from "react-icons/md";
 import { BsPeople } from "react-icons/bs";
-import { AiOutlineApartment, AiOutlineHome } from "react-icons/ai";
+import { AiOutlineApartment, AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
 
 export const linksArray = [
     {
@@ -9,28 +9,28 @@ export const linksArray = [
         to: "/",
     },
     {
-        label: "Monitor de TCP",
-        icon: <BsPeople />,
+        label: "Monitor TCP",
+        icon: <AiOutlineApartment />,
         to: "/tcp",
-        description: "Monitor de TCP",
+        description: "Número de conexões TCP estabelecidas",
     },
     {
-        label: "Uso da Memória",
-        icon: <MdOutlineAnalytics />,
+        label: "Monitor UDP",
+        icon: <BsPeople />,
         to: "/memory",
         description: "Monitor de TCP",
     },
     {
         label: "Monitor de Processos",
-        icon: <BsPeople />,
+        icon: <MdOutlineAnalytics />,
         to: "/process",
-        description: "Monitor de TCP",
+        description: "Número de processos rodando no sistema",
     },
     {
         label: "Versão do Sistema",
-        icon: <AiOutlineApartment />,
+        icon: <AiOutlineInfoCircle />,
         to: "/version",
-        description: "Monitor de TCP",
+        description: "Identifica Sistema Operacional",
     },
 ];
 

@@ -5,23 +5,25 @@ export const SCard = styled.div`
     width: 60vw;
     max-height: 100%;
     background: ${({ theme }) => theme.bg};
-    padding: ${v.xxlSpacing} ${v.xxlSpacing} ${v.lgSpacing} ${v.xxlSpacing};
+    padding: ${v.xxlSpacing} ${v.xxlSpacing} ${v.xlSpacing} ${v.xxlSpacing};
     margin-bottom: ${v.xlSpacing};
     border-radius: .5rem;
     box-shadow: 0 0 #0000, 0 0 #0000,0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
 `;
 
 export const SSmallCard = styled.div`
+    max-width: 15vw;
+    width: 100%;
     max-height: 100%;
     background: ${({ theme }) => theme.bg};
     padding: ${v.lgSpacing};
-    margin: ${v.mdSpacing};
+    margin: ${v.mdSpacing} ${v.lgSpacing} ${v.lgSpacing} 0;
     border-radius: .5rem;
     box-shadow: 0 0 #0000, 0 0 #0000,0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px -1px rgba(0,0,0,.1);
 `;
 
 export const SCardHeader = styled.div`
-    display:flex;
+    display: flex;
     justify-content: flex-start;
     flex-flow: column wrap;
     margin-left: ${v.smSpacing};
@@ -35,6 +37,7 @@ export const SCardTitle = styled.h1`
 
 export const SSmallCardTitle = styled.h1`
     font-size: 18px;
+    margin-bottom: ${v.smSpacing};
 `;
 
 export const SCardLabel = styled.label`
@@ -59,6 +62,7 @@ export const SFeatures = styled.div`
     display: flex;
     justify-content: start;
     flex-flow: row wrap;
+    width: 100%;
 `;
 
 export const SCardLabelContainer = styled.div`
