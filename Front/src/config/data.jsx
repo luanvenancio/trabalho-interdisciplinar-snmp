@@ -1,6 +1,6 @@
 import { MdOutlineAnalytics } from "react-icons/md";
-import { BsPeople } from "react-icons/bs";
-import { AiOutlineApartment, AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineApartment, AiOutlineHome, AiOutlineInfoCircle} from "react-icons/ai";
+import { IoGitNetworkOutline } from "react-icons/io5";
 
 export const linksArray = [
     {
@@ -16,7 +16,7 @@ export const linksArray = [
     },
     {
         label: "Monitor UDP",
-        icon: <BsPeople />,
+        icon: <IoGitNetworkOutline />,
         to: "/udp",
         description: "Porcentagem de UDP recebidos, perdidos e enviados",
     },
