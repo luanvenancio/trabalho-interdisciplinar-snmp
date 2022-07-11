@@ -11,14 +11,11 @@ import {
 } from "../components/Card/styles";
 import {
     SLink,
-    SLinkContainer,
     SLinkIcon,
 } from "../components/Sidebar/styles";
-import { MdOutlineAnalytics } from "react-icons/md";
-import { BsPeople } from "react-icons/bs";
-import { AiOutlineApartment } from "react-icons/ai";
-import { FiExternalLink } from "react-icons/fi";
+import { linksArray } from "../config/data";
 import { logoSVG } from "../assets";
+import { FiExternalLink } from "react-icons/fi";
 
 const HomePage = () => {
     return (
@@ -32,11 +29,11 @@ const HomePage = () => {
                     </SCardImage>
                     Ferramenta SNMP
                 </SCardTitle>
-                <SCardLabel>Função Monitorar SNMP</SCardLabel>
+                <SCardLabel>Aplicação Web para o gerenciamento de redes de computadores usando o protocolo SNMP</SCardLabel>
             </SCard>
             <h1>Funcionalidades</h1>
             <SFeatures>
-                {linksArray.map(({ icon, label, to, description }) => (
+                {linksArray.slice(1).map(({ icon, label, to, description }) => (
                     <SSmallCard key={label}>
                         <SIconBackground>
                             <SLinkIcon>{icon}</SLinkIcon>
@@ -52,32 +49,5 @@ const HomePage = () => {
         </>
     );
 };
-
-const linksArray = [
-    {
-        label: "Monitor de TCP",
-        icon: <BsPeople />,
-        to: "/tcp",
-        description: "Monitor de TCP",
-    },
-    {
-        label: "Uso da Memória",
-        icon: <MdOutlineAnalytics />,
-        to: "/memory",
-        description: "Monitor de TCP",
-    },
-    {
-        label: "Monitor de Processos",
-        icon: <BsPeople />,
-        to: "/process",
-        description: "Monitor de TCP",
-    },
-    {
-        label: "Versão do Sistema",
-        icon: <AiOutlineApartment />,
-        to: "/version",
-        description: "Monitor de TCP",
-    },
-];
 
 export default HomePage;

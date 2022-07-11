@@ -1,8 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { ThemeContext } from "../../App";
 import { useLocation } from "react-router-dom";
-import { MdLogout, MdOutlineAnalytics } from "react-icons/md";
-import { BsPeople } from "react-icons/bs";
 import {
     SDivider,
     SLink,
@@ -18,15 +16,11 @@ import {
     SToggleThumb,
 } from "./styles";
 
-import {SIconBackground} from "../Card/styles";
-import {
-    AiOutlineApartment,
-    AiOutlineHome,
-    AiOutlineLeft,
-    AiOutlineSetting,
-} from "react-icons/ai";
+import { SIconBackground } from "../Card/styles";
+import { AiOutlineLeft } from "react-icons/ai";
 
 import { logoSVG } from "../../assets";
+import { linksArray } from "../../config/data";
 
 const Sidebar = () => {
     const { theme, setTheme } = useContext(ThemeContext);
@@ -44,8 +38,8 @@ const Sidebar = () => {
                 </SSidebarButton>
             </>
             <SLogo>
-            <SIconBackground>
-                <img src={logoSVG} alt="logo" />
+                <SIconBackground>
+                    <img src={logoSVG} alt="logo" />
                 </SIconBackground>
             </SLogo>
             {linksArray.map(({ icon, label, to }) => (
@@ -58,7 +52,6 @@ const Sidebar = () => {
                         {sidebarOpen && (
                             <>
                                 <SLinkLabel>{label}</SLinkLabel>
-    
                             </>
                         )}
                     </SLink>
@@ -70,7 +63,7 @@ const Sidebar = () => {
                 <SThemeToggler
                     isActive={theme === "dark"}
                     onClick={() =>
-                        setTheme((p) => (p === 'light' ? 'dark' : 'light'))
+                        setTheme((p) => (p === "light" ? "dark" : "light"))
                     }
                 >
                     <SToggleThumb
@@ -81,34 +74,5 @@ const Sidebar = () => {
         </SSidebar>
     );
 };
-
-const linksArray = [
-    {
-        label: "Home",
-        icon: <AiOutlineHome />,
-        to: "/",
-    },
-    {
-        label: "Monitor de TCP",
-        icon: <BsPeople />,
-        to: "/tcp",
-    },
-    {
-        label: "Uso da Memória",
-        icon: <MdOutlineAnalytics />,
-        to: "/memory",
-    },
-    {
-        label: "Monitor de Processos",
-        icon: <BsPeople />,
-        to: "/process",
-    },
-    {
-        label: "Versão do Sistema",
-        icon: <AiOutlineApartment />,
-        to: "/version",
-    },
-];
-
 
 export default Sidebar;

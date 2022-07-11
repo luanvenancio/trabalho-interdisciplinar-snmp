@@ -94,7 +94,6 @@ export const SCardImage = styled.div`
         width: 2rem;
         height: auto;
     }
-
     cursor: pointer;
 
     margin-bottom: ${v.mdSpacing};

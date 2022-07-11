@@ -15,17 +15,12 @@ import { SButton } from "../components/Button/styles";
 import { BsPlayFill, BsStopFill } from "react-icons/bs";
 import EditInput from "../components/EditInput/EditInput";
 import Api from "../services/ApiService";
+import { optionsInterval } from "../config/data";
 
 Chart.register(...registerables);
 
 const labelIPInX = [];
 const dataIPInY = [];
-const options = [
-    { value: 1000, label: "1 Seg" },
-    { value: 2000, label: "2 Seg" },
-    { value: 3000, label: "3 Seg" },
-    { value: 5000, label: "5 Seg" },
-];
 
 const ProcessPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
@@ -111,15 +106,16 @@ const ProcessPage = () => {
                     <Select
                         defaultValue={timeIntervalOption}
                         onChange={setTimeIntervalOption}
-                        options={options}
-                        theme={theme => ({
+                        options={optionsInterval}
+                        theme={(theme) => ({
                             ...theme,
                             borderRadius: 0,
                             colors: {
-                              ...theme.colors,
-                              neutral0: `${({ theme }) => theme.bg3}`,
-                              text: `${({ theme }) => theme.text}`,
-                            }})}
+                                ...theme.colors,
+                                neutral0: `${({ theme }) => theme.bg3}`,
+                                text: `${({ theme }) => theme.text}`,
+                            },
+                        })}
                     />
                 </SCardLabelContainer>
             </SCardHeader>
