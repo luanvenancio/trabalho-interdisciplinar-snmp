@@ -97,7 +97,7 @@ export const SCardImage = styled.div`
     justify-content: ${(props) => props.align};
 
     img {
-        width: 2rem;
+        width: ${(props) => props.width};
         height: auto;
     }
     cursor: pointer;
