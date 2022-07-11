@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import {
     SCard,
     SCardContainer,
@@ -42,6 +43,10 @@ const VersionPage = () => {
 
     return (
         <SCard>
+            <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+            />
             <SCardHeader>
                 <SCardTitle>Versão do Sistema</SCardTitle>
                 <SCardInputContainer>

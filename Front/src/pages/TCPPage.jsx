@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import Select from "react-select";
+import { Toaster } from "react-hot-toast";
 import {
     SCard,
     SCardContainer,
@@ -90,6 +91,10 @@ const TCPPage = () => {
 
     return (
         <SCard>
+            <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+            />
             <SCardHeader>
                 <SCardTitle>Monitor de Conexões TCP</SCardTitle>
                 <SCardLabelContainer>
