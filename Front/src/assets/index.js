@@ -1,4 +1,4 @@
-import logo from './logo2.svg';
+import logo from './logo.svg';
 import linux from './linux.png';
 import windows from './windows.png';
 
