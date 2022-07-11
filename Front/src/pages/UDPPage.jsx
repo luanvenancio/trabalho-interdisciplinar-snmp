@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import { Toaster } from "react-hot-toast";
 import {
     SCard,
     SCardContainer,
@@ -125,6 +126,10 @@ const UDPPage = () => {
 
     return (
         <SCard>
+            <Toaster
+                position="bottom-right"
+                reverseOrder={false}
+            />
             <SCardHeader>
                 <SCardTitle>Monitor UDP</SCardTitle>
                 <SCardLabelContainer>

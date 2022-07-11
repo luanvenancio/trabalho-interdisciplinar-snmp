@@ -10,13 +10,13 @@ class SnmpService : ISnmpService
     {
     }
 
-    public async Task<List<string>> ReadResource(string ipAddress, string community, string oid)
+    public List<string> ReadResource(string ipAddress, string community, string oid)
     {
         var host = new IPEndPoint(IPAddress.Parse(ipAddress), 161);
         var communityOctet = new OctetString(community);
         var variables = new List<Variable>{new Variable(new ObjectIdentifier(oid))};
 
-        var oids = await Messenger.GetAsync(VersionCode.V1, host, communityOctet, variables);
+        var oids = Messenger.Get(VersionCode.V1, host, communityOctet, variables, 1000);
 
         var oidMessages = new List<string>();
 
