@@ -1,21 +1,33 @@
 using Api.Middlewares;
 using Api.Services;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
+
+// Arquivo para configurar o Pipeline da aplicação
+
+// Cria o webhost
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Add services to the container.
+// Configura os serviços da aplicação
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
+
+// Adiciona o Swagger para documentação - https://localhost:5001/
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "SNMP API", Description = "API for SNMP Queries", Version = "v1" });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
 });
 
+
+// Registra o serviço de SNMP no Container de Injeção de Dependência(IoC)
 builder.Services.AddScoped<ISnmpService, SnmpService>();
 
+// Habilita o CORS
 builder.Services.AddCors(options => {
     options.AddPolicy("Cors", policy => {
         policy.AllowAnyHeader()
@@ -26,7 +38,7 @@ builder.Services.AddCors(options => {
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configura o pipeline de requisições HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -37,6 +49,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+// Registra o middleware de tratamento de exceções 
 app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
 app.UseCors("Cors");

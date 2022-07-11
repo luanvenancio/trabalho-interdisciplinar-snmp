@@ -1,2 +1,2 @@
-Api/obj/
-Api/bin/
+Api/bin/*
+Api/bin/Debug/net6.0/Api.exe
