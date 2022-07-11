@@ -17,8 +17,8 @@ export const linksArray = [
     {
         label: "Monitor UDP",
         icon: <BsPeople />,
-        to: "/memory",
-        description: "Monitor de TCP",
+        to: "/udp",
+        description: "Porcentagem de UDP recebidos, perdidos e enviados",
     },
     {
         label: "Monitor de Processos",
@@ -30,7 +30,7 @@ export const linksArray = [
         label: "Versão do Sistema",
         icon: <AiOutlineInfoCircle />,
         to: "/version",
-        description: "Identifica Sistema Operacional",
+        description: "Identifica o Sistema Operacional",
     },
 ];
 

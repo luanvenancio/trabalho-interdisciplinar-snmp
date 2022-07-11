@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
     SCard,
     SCardContainer,
-    SCardChartContainer,
     SCardHeader,
     SCardTitle,
     SCardInputContainer,
@@ -23,6 +22,7 @@ const VersionPage = () => {
     const [info, setInfo] = useState("");
 
     const handleClick = async () => {
+
         const dados = {
             // No dados terá os dados de pesquisa na API
             ipAddress: ipAddressValue,
@@ -33,14 +33,11 @@ const VersionPage = () => {
         // endpoint, objeto
         Api.get("snmp", dados)
             .then((response) => {
-                //setInfo(response.data[0].split("-"));
                 setInfo(response.data);
             })
             .catch((error) => {
                 console.log(error.response?.data);
             });
-
-        console.log(info);
     };
 
     return (

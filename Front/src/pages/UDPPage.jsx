@@ -1,56 +1,62 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import {
     SCard,
     SCardContainer,
     SCardChartContainer,
     SCardHeader,
     SCardTitle,
+    SCardLabelContainer,
+    SCardInputContainer,
 } from "../components/Card/styles";
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Doughnut, Line } from "react-chartjs-2";
 import { SButton } from "../components/Button/styles";
 import { BsPlayFill, BsStopFill } from "react-icons/bs";
+import { optionsInterval } from "../config/data";
 import EditInput from "../components/EditInput/EditInput";
 import Api from "../services/ApiService";
 
 ChartJS.register(...registerables);
 
-const dataT = [];
-const dataL = [];
-const dataV = [];
+const dataUdpDelivered = [];
+const dataUdpErrors = [];
+const dataUdpSend = [];
 
-const MonitorPage = () => {
+const UDPPage = () => {
     const [ipAddressValue, setIpAddressValue] = useState("192.168.100.2");
+    const [comunityValue, setComunityValue] = useState("gerencia");
     const [iniciar, setIniciar] = useState(false);
+    const [timeIntervalOption, setTimeIntervalOption] = useState({
+        value: 1000,
+        label: "1 seg",
+    });
 
     const [data, setData] = useState({
-        labels: ["Delivered", "Errors", "Send"],
+        labels: ["Recebido(%)", "Erros(%)", "Enviado(%)"],
         datasets: [
             {
-                backgroundColor: ["#347CFF", "#ff3434", "#39f387"],
-                borderColor: ["#316ddf", "#e02e2e", "#24c467"],
+                backgroundColor: ["#1A56DB", "#16BDCA", "#6976F5"],
+                borderColor: ["#1A56DB", "#16BDCA", "#6976F5"],
             },
         ],
     });
 
     const udpDelivered = {
-        // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
-        community: "gerencia",
+        community: comunityValue,
         oid: "1.3.6.1.2.1.7.1.0",
     };
 
     const udpErrors = {
-        // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
-        community: "gerencia",
+        community: comunityValue,
         oid: "1.3.6.1.2.1.7.3.0",
     };
 
     const udpSend = {
-        // No dados terá os dados de pesquisa na API
         ipAddress: ipAddressValue,
-        community: "gerencia",
+        community: comunityValue,
         oid: "1.3.6.1.2.1.7.4.0",
     };
 
@@ -60,9 +66,11 @@ const MonitorPage = () => {
                 // endpoint, objeto
                 Api.get("snmp", udpDelivered)
                     .then((response) => {
-                        dataT.push(response.data[0].split("Data: ")[1]);
-                        //console.log(response.data[0].split("Data: ")[1]);
-                        if (dataT.length > 1) dataT.shift();
+                        dataUdpDelivered.push(
+                            response.data[0].split("Data: ")[1]
+                        );
+                        if (dataUdpDelivered.length > 1)
+                            dataUdpDelivered.shift();
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
@@ -70,9 +78,8 @@ const MonitorPage = () => {
 
                 Api.get("snmp", udpErrors)
                     .then((response) => {
-                        dataL.push(response.data[0].split("Data: ")[1]);
-                        //console.log(response.data[0].split("Data: ")[1]);
-                        if (dataL.length > 1) dataL.shift();
+                        dataUdpErrors.push(response.data[0].split("Data: ")[1]);
+                        if (dataUdpErrors.length > 1) dataUdpErrors.shift();
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
@@ -80,33 +87,38 @@ const MonitorPage = () => {
 
                 Api.get("snmp", udpSend)
                     .then((response) => {
-                        dataV.push(response.data[0].split("Data: ")[1]);
-                        //console.log(response.data[0].split("Data: ")[1]);
-                        if (dataV.length > 1) dataV.shift();
+                        dataUdpSend.push(response.data[0].split("Data: ")[1]);
+                        if (dataUdpSend.length > 1) dataUdpSend.shift();
                     })
                     .catch((error) => {
                         console.log(error.response?.data);
                     });
 
-                //let aux = ((dataL * 100)/dataT);
-                console.log("Errors " + dataL);
-                console.log("Deliv " + dataT);
-                console.log("Send " + dataV);
-                //console.log(dataL);
+                let aux = 0;
+                aux =
+                    parseInt(dataUdpErrors) +
+                    parseInt(dataUdpDelivered) +
+                    parseInt(dataUdpSend);
+
                 setData({
-                    labels: ["Delivered", "Errors", "Send"],
+                    labels: ["Recebido(%)", "Erros(%)", "Enviado(%)"],
                     datasets: [
                         {
-                            data: [dataT, dataL, dataV],
-                            backgroundColor: ["#347CFF", "#ff3434", "#39f387"],
-                            borderColor: ["#316ddf", "#e02e2e", "#24c467"],
+                            data: [
+                                (parseInt(dataUdpDelivered) * 100) /
+                                    parseInt(aux),
+                                (parseInt(dataUdpErrors) * 100) / parseInt(aux),
+                                (parseInt(dataUdpSend) * 100) / parseInt(aux),
+                            ],
+                            backgroundColor: ["#1A56DB", "#16BDCA", "#6976F5"],
+                            borderColor: ["#1A56DB", "#16BDCA", "#6976F5"],
                         },
                     ],
                 });
             } else {
                 clearInterval(interval);
             }
-        }, 1000);
+        }, timeIntervalOption.value);
 
         return () => clearInterval(interval);
     }, [iniciar]);
@@ -115,10 +127,31 @@ const MonitorPage = () => {
         <SCard>
             <SCardHeader>
                 <SCardTitle>Monitor UDP</SCardTitle>
-                <EditInput
-                    value={ipAddressValue}
-                    setValue={setIpAddressValue}
-                ></EditInput>
+                <SCardLabelContainer>
+                    <SCardInputContainer>
+                        <EditInput
+                            value={ipAddressValue}
+                            setValue={setIpAddressValue}
+                        ></EditInput>
+                        <EditInput
+                            value={comunityValue}
+                            setValue={setComunityValue}
+                        ></EditInput>
+                    </SCardInputContainer>
+                    <Select
+                        defaultValue={timeIntervalOption}
+                        onChange={setTimeIntervalOption}
+                        options={optionsInterval}
+                        theme={(theme) => ({
+                            ...theme,
+                            borderRadius: 0,
+                            colors: {
+                                ...theme.colors,
+                                neutral0: `${({ theme }) => theme.bg2}`,
+                            },
+                        })}
+                    />
+                </SCardLabelContainer>
             </SCardHeader>
             <SCardChartContainer>
                 <Doughnut
@@ -149,4 +182,4 @@ const MonitorPage = () => {
     );
 };
 
-export default MonitorPage;
+export default UDPPage;
