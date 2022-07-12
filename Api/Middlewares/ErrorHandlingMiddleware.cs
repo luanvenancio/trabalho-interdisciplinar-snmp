@@ -8,6 +8,7 @@ public class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
 
+    // Middleware para tratar as exceções que ocorrerem sem necessidade de usar try/catch
     public ErrorHandlingMiddleware(RequestDelegate next)
     {
         _next = next;
