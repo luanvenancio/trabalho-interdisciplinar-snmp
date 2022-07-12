@@ -423,3 +423,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 vscode
+.vscode
+Api/bin/
+Api/obj/
+*.zip
