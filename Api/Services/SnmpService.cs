@@ -16,6 +16,7 @@ class SnmpService : ISnmpService
         var communityOctet = new OctetString(community);
         var variables = new List<Variable>{new Variable(new ObjectIdentifier(oid))};
 
+        // Método para consultar OID, IP e comunidade
         var oids = Messenger.Get(VersionCode.V1, host, communityOctet, variables, 10000);
 
         var oidMessages = new List<string>();

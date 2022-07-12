@@ -6,9 +6,15 @@ Como rodar o projeto:
 
 Para rodar a API, é necessário ter o SDK do .NET 6 (https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.301-windows-x64-installer/) instalado
 e executar os seguintes comandos:
-
+    
+    Windows:
     cd Api
     dotnet run
+
+    Linux: 
+    https://docs.microsoft.com/pt-br/dotnet/core/install/linux-ubuntu#2204
+    cd Api
+    dotnet run (se não rodar normalmente será preciso acessar a pasta bin apos esse comando e usar: dotnet ./Api.dll)
 
 Para rodar o Front, é necessário ter o NodeJS (https://nodejs.org/download/release/v14.5.0/win-x64/) instalado
 e executar os seguintes comandos:
