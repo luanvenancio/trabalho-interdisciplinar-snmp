@@ -63,7 +63,7 @@ const VersionPage = () => {
             <SCardHeader>
                 {info && info[0].includes("Windows") ? (
                     <>
-                        <SCardImage align="center">
+                        <SCardImage align="center" width="8.5rem">
                             <img src={windowsPNG} alt="windows" />
                         </SCardImage>
                         {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
@@ -73,7 +73,7 @@ const VersionPage = () => {
                 )}
                 {info && info[0].includes("Linux") ? (
                     <>
-                        <SCardImage>
+                        <SCardImage align="center" width="8.5rem">
                         <img src={linuxPNG} alt="linux" />
                         </SCardImage>
                         {info[0].split("Data: ")[1] ? info[0].split("Data: ")[1] : info[0]}
