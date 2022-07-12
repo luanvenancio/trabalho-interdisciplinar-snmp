@@ -5,5 +5,5 @@ namespace Api.Services;
 
 public interface ISnmpService
 {
-    Task<List<string>> ReadResource(string iPAddress, string community, string oid);
+    List<string> ReadResource(string iPAddress, string community, string oid);
 }
